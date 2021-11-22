@@ -6,6 +6,7 @@
 #include <ovni.h>
 #include <Barreira.h>
 #include <Tiro.h>
+#include <cstdio>
 
 using std::vector;
 
@@ -16,7 +17,7 @@ class Jogo
         Jogo();
         virtual ~Jogo();
         int get_score();
-        vector<Nave> get_Naves();
+        Nave get_Nave();
         vector<ovni> get_ovinis();
         vector<Tiro> get_tiros();
         Barreira get_superior();
@@ -24,7 +25,7 @@ class Jogo
         void fim();
         void update();
         void reset();
-        void destroi_Nave(int id);
+        void destroi_Ovni(int id);
         void destroi_Tiro(int id);
 
     protected:
@@ -34,9 +35,9 @@ class Jogo
         int inicio_tempo;
         int velocidade;
 
-        vector<Nave> naves;
         vector<ovni> ovnis;
         vector<Tiro> tiros;
+        Nave nave = Nave(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
         Barreira superior = Barreira(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
         Barreira inferior = Barreira(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 };

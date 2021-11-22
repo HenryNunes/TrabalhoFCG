@@ -312,7 +312,8 @@ int main(int argc, char* argv[])
 
     //CODIGO NOVO: Cria o objeto jogo que vai armazenar os objetos do jogo e computa as regras do jogo
     Jogo j;
-
+    printf("size %d \n", j.get_ovinis().size());
+    printf("score %d \n", j.get_score());
 
     // Ficamos em loop, renderizando, até que o usuário feche a janela
     while (!glfwWindowShouldClose(window))
@@ -395,7 +396,8 @@ int main(int argc, char* argv[])
         #define SPHERE 0
         #define BUNNY  1
         #define PLANE  2
-        /*
+
+        /* Não usado
         // Desenhamos o modelo da esfera
         model = Matrix_Translate(-1.0f,0.0f,0.0f)
               * Matrix_Rotate_Z(0.6f)
@@ -417,13 +419,19 @@ int main(int argc, char* argv[])
         glUniformMatrix4fv(model_uniform, 1 , GL_FALSE , glm::value_ptr(model));
         glUniform1i(object_id_uniform, PLANE);
         DrawVirtualObject("plane");
-
         */
+
         //Desenhando os ovnis
-        vector<ovni> ovnis = j.get_ovinis();
+        vector<ovni> ovnis;
+        ovnis = j.get_ovinis();
+
 
         for(int i = 0; i < ovnis.size(); i++){
             ovni v = ovnis[i];
+            model = Matrix_Translate(v.t_x, v.t_y, v.t_z) * Matrix_Rotate_X(v.r_x) * Matrix_Rotate_Y(v.r_y) * Matrix_Rotate_Z(v.r_z);
+            glUniformMatrix4fv(model_uniform, 1 , GL_FALSE , glm::value_ptr(model));
+            glUniform1i(object_id_uniform, SPHERE);
+            DrawVirtualObject("sphere");
         }
 
 

@@ -2,7 +2,7 @@
 1637454537 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\barreira.cpp
 	"Barreira.h"
 
-1637453877 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\barreira.h
+1637458007 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\barreira.h
 
 1603713706 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\glad.c
 	<stdio.h>
@@ -29,7 +29,7 @@
 	<inttypes.h>
 	<stdint.h>
 
-1637456618 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\main.cpp
+1637462017 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\main.cpp
 	<cmath>
 	<cstdio>
 	<cstdlib>
@@ -931,12 +931,12 @@
 1637454537 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\nave.cpp
 	"Nave.h"
 
-1637453885 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\nave.h
+1637458023 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\nave.h
 
-1637454537 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\ovni.cpp
+1637458252 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\ovni.cpp
 	"ovni.h"
 
-1637453881 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\ovni.h
+1637457995 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\ovni.h
 
 1603713706 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\stb_image.cpp
 	"stb_image.h"
@@ -957,16 +957,18 @@
 1603713706 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\tiny_obj_loader.cpp
 	"tiny_obj_loader.h"
 
-1637457705 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\jogo.cpp
+1637461894 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\jogo.cpp
 	"Jogo.h"
 	<GLFW/glfw3.h>
+	<cstdio>
 
-1637455828 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\jogo.h
+1637461503 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\jogo.h
 	<vector>
 	<Nave.h>
 	<ovni.h>
 	<Barreira.h>
 	<Tiro.h>
+	<cstdio>
 
 1637453867 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\tiro.h
 
