@@ -15,6 +15,9 @@ class Nave
         float r_x;
         float r_y;
         float r_z;
+
+        void mover_direita(float delta_t);
+        void mover_esquerda(float delta_t);
     protected:
 
     private:

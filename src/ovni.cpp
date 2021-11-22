@@ -15,3 +15,7 @@ ovni::~ovni()
 {
     //dtor
 }
+
+void ovni::move(float delta_t){
+    this->t_y = this->t_y - 4*delta_t;
+}

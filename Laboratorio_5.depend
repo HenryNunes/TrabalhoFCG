@@ -29,7 +29,7 @@
 	<inttypes.h>
 	<stdint.h>
 
-1637611403 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\main.cpp
+1637618912 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\main.cpp
 	<cmath>
 	<cstdio>
 	<cstdlib>
@@ -928,15 +928,16 @@
 	<glm/vec4.hpp>
 	<glm/gtc/matrix_transform.hpp>
 
-1637610794 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\nave.cpp
+1637616384 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\nave.cpp
 	"Nave.h"
+	<cstdio>
 
-1637458023 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\nave.h
+1637616160 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\nave.h
 
-1637458252 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\ovni.cpp
+1637618851 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\ovni.cpp
 	"ovni.h"
 
-1637457995 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\ovni.h
+1637618256 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\ovni.h
 
 1603713706 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\stb_image.cpp
 	"stb_image.h"
@@ -957,12 +958,12 @@
 1603713706 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\tiny_obj_loader.cpp
 	"tiny_obj_loader.h"
 
-1637611125 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\jogo.cpp
+1637618995 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\jogo.cpp
 	"Jogo.h"
 	<GLFW/glfw3.h>
 	<cstdio>
 
-1637461503 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\jogo.h
+1637618723 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\jogo.h
 	<vector>
 	<Nave.h>
 	<ovni.h>
@@ -970,8 +971,8 @@
 	<Tiro.h>
 	<cstdio>
 
-1637611479 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\tiro.h
+1637618046 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\tiro.h
 
-1637611425 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\tiro.cpp
+1637618415 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\tiro.cpp
 	"Tiro.h"
 

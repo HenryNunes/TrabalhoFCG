@@ -123,6 +123,9 @@ void MouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
 void CursorPosCallback(GLFWwindow* window, double xpos, double ypos);
 void ScrollCallback(GLFWwindow* window, double xoffset, double yoffset);
 
+//Codigo Adicionado: Cria o objeto do Jogo
+Jogo j;
+
 // Definimos uma estrutura que armazenará dados necessários para renderizar
 // cada objeto da cena virtual.
 struct SceneObject
@@ -238,11 +241,11 @@ int main(int argc, char* argv[])
     // pressionar alguma tecla do teclado ...
     glfwSetKeyCallback(window, KeyCallback);
     // ... ou clicar os botões do mouse ...
-    glfwSetMouseButtonCallback(window, MouseButtonCallback);
+    //glfwSetMouseButtonCallback(window, MouseButtonCallback);
     // ... ou movimentar o cursor do mouse em cima da janela ...
-    glfwSetCursorPosCallback(window, CursorPosCallback);
+    //glfwSetCursorPosCallback(window, CursorPosCallback);
     // ... ou rolar a "rodinha" do mouse.
-    glfwSetScrollCallback(window, ScrollCallback);
+    //glfwSetScrollCallback(window, ScrollCallback);
 
     // Indicamos que as chamadas OpenGL deverão renderizar nesta janela
     glfwMakeContextCurrent(window);
@@ -310,10 +313,10 @@ int main(int argc, char* argv[])
     glm::mat4 the_model;
     glm::mat4 the_view;
 
-    //CODIGO NOVO: Cria o objeto jogo que vai armazenar os objetos do jogo e computa as regras do jogo
-    Jogo j;
-    printf("size %d \n", j.get_ovinis().size());
-    printf("score %d \n", j.get_score());
+    //CODIGO NOVO: Inicia o contador de tempo do jogo que vai armazenar os objetos do jogo e computa as regras do jogo
+    j.start();
+    //printf("size %d \n", j.get_ovinis().size());
+    //printf("score %d \n", j.get_score());
 
     // Ficamos em loop, renderizando, até que o usuário feche a janela
     while (!glfwWindowShouldClose(window))
@@ -448,12 +451,17 @@ int main(int argc, char* argv[])
         }
 
         //Desenhando a nave
-        Nave nave = j.get_Nave();
-        model = Matrix_Translate(nave.t_x, nave.t_y, nave.t_z) * Matrix_Rotate_X(nave.r_x) * Matrix_Rotate_Y(nave.r_y) * Matrix_Rotate_Z(nave.r_z);
+        //*
+        Nave* nave = j.get_Nave();
+        model = Matrix_Translate(nave->t_x, nave->t_y, nave->t_z) * Matrix_Rotate_X(nave->r_x) * Matrix_Rotate_Y(nave->r_y) * Matrix_Rotate_Z(nave->r_z);
         glUniformMatrix4fv(model_uniform, 1 , GL_FALSE , glm::value_ptr(model));
         glUniform1i(object_id_uniform, SPHERE);
         DrawVirtualObject("sphere");
+        //*/
 
+
+        //Atualiza o Jogo
+        j.update();
 
         // Pegamos um vértice com coordenadas de modelo (0.5, 0.5, 0.5, 1) e o
         // passamos por todos os sistemas de coordenadas armazenados nas
@@ -1174,6 +1182,7 @@ void ScrollCallback(GLFWwindow* window, double xoffset, double yoffset)
 
 // Definição da função que será chamada sempre que o usuário pressionar alguma
 // tecla do teclado. Veja http://www.glfw.org/docs/latest/input_guide.html#input_key
+//Alterado para mover
 void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mod)
 {
     // ==============
@@ -1249,6 +1258,31 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mod)
         fprintf(stdout,"Shaders recarregados!\n");
         fflush(stdout);
     }
+
+    //Codigo adicionado
+    //Movimentação nave GLFW_REPEAT
+    if (key == GLFW_KEY_A )
+    {
+        if(j.para == 1) return;
+        float delta_t = glfwGetTime() - j.ultimo_frame;
+        Nave* nave = j.get_Nave();
+        nave->mover_esquerda(delta_t);
+
+    }
+    if (key == GLFW_KEY_D )
+    {
+        if(j.para == 1) return;
+        float delta_t = glfwGetTime() - j.ultimo_frame;
+        Nave* nave = j.get_Nave();
+        nave->mover_direita(delta_t);
+    }
+
+    if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
+    {
+        if(j.para == 1) return;
+        j.dispara();
+    }
+
 }
 
 // Definimos o callback para impressão de erros da GLFW no terminal

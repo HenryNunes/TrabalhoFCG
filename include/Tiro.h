@@ -14,6 +14,8 @@ class Tiro
         float r_x;
         float r_y;
         float r_z;
+
+        void move(float delta_t);
     protected:
 
     private:

@@ -16,3 +16,8 @@ Tiro::~Tiro()
 {
     //dtor
 }
+
+void Tiro::move(float delta_t){
+    this->t_y = this->t_y + 6*delta_t;
+}
+
