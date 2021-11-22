@@ -29,7 +29,7 @@
 	<inttypes.h>
 	<stdint.h>
 
-1637462017 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\main.cpp
+1637611403 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\main.cpp
 	<cmath>
 	<cstdio>
 	<cstdlib>
@@ -928,7 +928,7 @@
 	<glm/vec4.hpp>
 	<glm/gtc/matrix_transform.hpp>
 
-1637454537 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\nave.cpp
+1637610794 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\nave.cpp
 	"Nave.h"
 
 1637458023 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\nave.h
@@ -957,7 +957,7 @@
 1603713706 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\tiny_obj_loader.cpp
 	"tiny_obj_loader.h"
 
-1637461894 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\jogo.cpp
+1637611125 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\jogo.cpp
 	"Jogo.h"
 	<GLFW/glfw3.h>
 	<cstdio>
@@ -970,8 +970,8 @@
 	<Tiro.h>
 	<cstdio>
 
-1637453867 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\tiro.h
+1637611479 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\tiro.h
 
-1637454535 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\tiro.cpp
+1637611425 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\tiro.cpp
 	"Tiro.h"
 

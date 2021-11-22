@@ -9,7 +9,7 @@ Jogo::Jogo()
         this->inicio_tempo = glfwGetTime();
         this->velocidade = 1;
 
-        this->nave = Nave(0.0, -5.0, 0.0, 0.0, 0.0, 0.0);
+
         //this->ovnis = vector<ovni>;
         //this->tiros = vector<Tiro>;
 
@@ -20,10 +20,13 @@ Jogo::Jogo()
        //Preenche os vetores
        //Ovnies
        for(int i = 0; i < 5; i++){
-          ovni temp(float((i*3)-6), 0.0, 0.0, 0.0, 0.0, 0.0);
+          ovni temp(float((i*6)-12), 13.0, 0.0, 0.0, 0.0, 0.0);
           ovnis.push_back(temp);
        }
-       printf("size %d", ovnis.size());
+       //printf("size %d", ovnis.size());
+
+       //Cria nave
+       this->nave = Nave(0.0, -12.0, 0.0, 0.0, 0.0, 0.0);
 
 }
 

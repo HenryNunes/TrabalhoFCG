@@ -326,7 +326,7 @@ int main(int argc, char* argv[])
         // Conversaremos sobre sistemas de cores nas aulas de Modelos de Iluminação.
         //
         //           R     G     B     A
-        glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+        glClearColor(0.2f, 0.2f, 0.5f, 1.0f);
 
         // "Pintamos" todos os pixels do framebuffer com a cor definida acima,
         // e também resetamos todos os pixels do Z-buffer (depth buffer).
@@ -340,7 +340,10 @@ int main(int argc, char* argv[])
         // variáveis g_CameraDistance, g_CameraPhi, e g_CameraTheta são
         // controladas pelo mouse do usuário. Veja as funções CursorPosCallback()
         // e ScrollCallback().
-        float r = g_CameraDistance;
+
+        //Alterado
+        //float r = g_CameraDistance;
+        float r = 30;
         float y = r*sin(g_CameraPhi);
         float z = r*cos(g_CameraPhi)*cos(g_CameraTheta);
         float x = r*cos(g_CameraPhi)*sin(g_CameraTheta);
@@ -362,7 +365,7 @@ int main(int argc, char* argv[])
         // Note que, no sistema de coordenadas da câmera, os planos near e far
         // estão no sentido negativo! Veja slides 176-204 do documento Aula_09_Projecoes.pdf.
         float nearplane = -0.1f;  // Posição do "near plane"
-        float farplane  = -10.0f; // Posição do "far plane"
+        float farplane  = -100.0f; // Posição do "far plane"
 
         if (g_UsePerspectiveProjection)
         {
@@ -425,7 +428,6 @@ int main(int argc, char* argv[])
         vector<ovni> ovnis;
         ovnis = j.get_ovinis();
 
-
         for(int i = 0; i < ovnis.size(); i++){
             ovni v = ovnis[i];
             model = Matrix_Translate(v.t_x, v.t_y, v.t_z) * Matrix_Rotate_X(v.r_x) * Matrix_Rotate_Y(v.r_y) * Matrix_Rotate_Z(v.r_z);
@@ -434,6 +436,23 @@ int main(int argc, char* argv[])
             DrawVirtualObject("sphere");
         }
 
+        //Desenhando Tiros
+        vector<Tiro> tiros = j.get_tiros();
+
+        for(int i = 0; i < tiros.size(); i++){
+            Tiro v = tiros[i];
+            model = Matrix_Translate(v.t_x, v.t_y, v.t_z) * Matrix_Rotate_X(v.r_x) * Matrix_Rotate_Y(v.r_y) * Matrix_Rotate_Z(v.r_z);
+            glUniformMatrix4fv(model_uniform, 1 , GL_FALSE , glm::value_ptr(model));
+            glUniform1i(object_id_uniform, SPHERE);
+            DrawVirtualObject("sphere");
+        }
+
+        //Desenhando a nave
+        Nave nave = j.get_Nave();
+        model = Matrix_Translate(nave.t_x, nave.t_y, nave.t_z) * Matrix_Rotate_X(nave.r_x) * Matrix_Rotate_Y(nave.r_y) * Matrix_Rotate_Z(nave.r_z);
+        glUniformMatrix4fv(model_uniform, 1 , GL_FALSE , glm::value_ptr(model));
+        glUniform1i(object_id_uniform, SPHERE);
+        DrawVirtualObject("sphere");
 
 
         // Pegamos um vértice com coordenadas de modelo (0.5, 0.5, 0.5, 1) e o

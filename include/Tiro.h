@@ -7,10 +7,6 @@ class Tiro
     public:
         Tiro(float t_x, float t_y, float t_z, float r_x, float r_y, float r_z);
         virtual ~Tiro();
-
-    protected:
-
-    private:
         float t_x;
         float t_y;
         float t_z;
@@ -18,6 +14,10 @@ class Tiro
         float r_x;
         float r_y;
         float r_z;
+    protected:
+
+    private:
+
 };
 
 #endif // TIRO_H
