@@ -31,7 +31,8 @@ class Jogo
         float ultimo_frame;
         float ultimo_disparo;
         void dispara();
-        bool para = 0;
+        bool para;
+        float ultima_onda;
     protected:
 
     private:
@@ -43,8 +44,6 @@ class Jogo
         vector<ovni> ovnis;
         vector<Tiro> tiros;
         Nave nave = Nave(0.0, -12.0, 0.0, -190.0, 0.0, 0.0);
-        Barreira superior = Barreira(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-        Barreira inferior = Barreira(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 };
 
 #endif // JOGO_H

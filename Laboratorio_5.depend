@@ -29,7 +29,7 @@
 	<inttypes.h>
 	<stdint.h>
 
-1637700217 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\main.cpp
+1637717004 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\main.cpp
 	<cmath>
 	<cstdio>
 	<cstdlib>
@@ -928,16 +928,19 @@
 	<glm/vec4.hpp>
 	<glm/gtc/matrix_transform.hpp>
 
-1637700089 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\nave.cpp
+1637720239 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\nave.cpp
 	"Nave.h"
 	<cstdio>
+	<GLFW/glfw3.h>
 
 1637616160 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\nave.h
 
-1637699674 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\ovni.cpp
+1637720425 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\ovni.cpp
 	"ovni.h"
+	<cmath>
+	<GLFW/glfw3.h>
 
-1637618256 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\ovni.h
+1637719438 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\ovni.h
 
 1603713706 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\stb_image.cpp
 	"stb_image.h"
@@ -958,12 +961,13 @@
 1603713706 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\tiny_obj_loader.cpp
 	"tiny_obj_loader.h"
 
-1637618995 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\jogo.cpp
+1637720346 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\jogo.cpp
 	"Jogo.h"
 	<GLFW/glfw3.h>
 	<cstdio>
+	"Colissions.h"
 
-1637700186 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\jogo.h
+1637717182 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\jogo.h
 	<vector>
 	<Nave.h>
 	<ovni.h>
@@ -976,8 +980,9 @@
 1637618415 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\tiro.cpp
 	"Tiro.h"
 
-1637695503 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\colissions.cpp
+1637714493 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\colissions.cpp
 	"Colissions.h"
+	<cmath>
 
-1637695503 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\colissions.h
+1637714325 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\colissions.h
 

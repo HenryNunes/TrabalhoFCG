@@ -112,6 +112,7 @@ void TextRendering_PrintMatrixVectorProductDivW(GLFWwindow* window, glm::mat4 M,
 void TextRendering_ShowModelViewProjection(GLFWwindow* window, glm::mat4 projection, glm::mat4 view, glm::mat4 model, glm::vec4 p_model);
 void TextRendering_ShowEulerAngles(GLFWwindow* window);
 void TextRendering_ShowProjection(GLFWwindow* window);
+void TextRendering_ShowScore(GLFWwindow* window);
 void TextRendering_ShowFramesPerSecond(GLFWwindow* window);
 
 // Funções callback para comunicação com o sistema operacional e interação do
@@ -241,11 +242,11 @@ int main(int argc, char* argv[])
     // pressionar alguma tecla do teclado ...
     glfwSetKeyCallback(window, KeyCallback);
     // ... ou clicar os botões do mouse ...
-    glfwSetMouseButtonCallback(window, MouseButtonCallback);
+    //glfwSetMouseButtonCallback(window, MouseButtonCallback);
     // ... ou movimentar o cursor do mouse em cima da janela ...
-    glfwSetCursorPosCallback(window, CursorPosCallback);
+    //glfwSetCursorPosCallback(window, CursorPosCallback);
     // ... ou rolar a "rodinha" do mouse.
-    glfwSetScrollCallback(window, ScrollCallback);
+    //glfwSetScrollCallback(window, ScrollCallback);
 
     // Indicamos que as chamadas OpenGL deverão renderizar nesta janela
     glfwMakeContextCurrent(window);
@@ -413,30 +414,6 @@ int main(int argc, char* argv[])
         #define OVNI   3
         #define SHIP   3
 
-        /* Não usado
-        // Desenhamos o modelo da esfera
-        model = Matrix_Translate(-1.0f,0.0f,0.0f)
-              * Matrix_Rotate_Z(0.6f)
-              * Matrix_Rotate_X(0.2f)
-              * Matrix_Rotate_Y(g_AngleY + (float)glfwGetTime() * 0.1f);
-        glUniformMatrix4fv(model_uniform, 1 , GL_FALSE , glm::value_ptr(model));
-        glUniform1i(object_id_uniform, SPHERE);
-        DrawVirtualObject("sphere");
-
-        // Desenhamos o modelo do coelho
-        model = Matrix_Translate(1.0f,0.0f,0.0f)
-              * Matrix_Rotate_X(g_AngleX + (float)glfwGetTime() * 0.1f);
-        glUniformMatrix4fv(model_uniform, 1 , GL_FALSE , glm::value_ptr(model));
-        glUniform1i(object_id_uniform, BUNNY);
-        DrawVirtualObject("bunny");
-
-        // Desenhamos o plano do chão
-        model = Matrix_Translate(0.0f,-1.1f,0.0f);
-        glUniformMatrix4fv(model_uniform, 1 , GL_FALSE , glm::value_ptr(model));
-        glUniform1i(object_id_uniform, PLANE);
-        DrawVirtualObject("plane");
-        */
-
         //Desenhando os ovnis
         vector<ovni> ovnis;
         ovnis = j.get_ovinis();
@@ -485,7 +462,11 @@ int main(int argc, char* argv[])
         TextRendering_ShowEulerAngles(window);
 
         // Imprimimos na informação sobre a matriz de projeção sendo utilizada.
-        TextRendering_ShowProjection(window);
+        //TextRendering_ShowProjection(window);
+
+        //Adicionado
+        //Mostra o score
+        TextRendering_ShowScore(window);
 
         // Imprimimos na tela informação sobre o número de quadros renderizados
         // por segundo (frames per second).
@@ -1232,7 +1213,7 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mod)
     }
 
     // Se o usuário apertar a tecla espaço, resetamos os ângulos de Euler para zero.
-    if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
+    /*if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
     {
         g_AngleX = 0.0f;
         g_AngleY = 0.0f;
@@ -1241,33 +1222,33 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mod)
         g_ForearmAngleZ = 0.0f;
         g_TorsoPositionX = 0.0f;
         g_TorsoPositionY = 0.0f;
-    }
+    }*/
 
     // Se o usuário apertar a tecla P, utilizamos projeção perspectiva.
-    if (key == GLFW_KEY_P && action == GLFW_PRESS)
+    /*if (key == GLFW_KEY_P && action == GLFW_PRESS)
     {
         g_UsePerspectiveProjection = true;
-    }
+    }*/
 
     // Se o usuário apertar a tecla O, utilizamos projeção ortográfica.
-    if (key == GLFW_KEY_O && action == GLFW_PRESS)
+    /*if (key == GLFW_KEY_O && action == GLFW_PRESS)
     {
         g_UsePerspectiveProjection = false;
-    }
+    }*/
 
     // Se o usuário apertar a tecla H, fazemos um "toggle" do texto informativo mostrado na tela.
-    if (key == GLFW_KEY_H && action == GLFW_PRESS)
+    /*if (key == GLFW_KEY_H && action == GLFW_PRESS)
     {
         g_ShowInfoText = !g_ShowInfoText;
-    }
+    }*/
 
     // Se o usuário apertar a tecla R, recarregamos os shaders dos arquivos "shader_fragment.glsl" e "shader_vertex.glsl".
-    if (key == GLFW_KEY_R && action == GLFW_PRESS)
-    {
-        LoadShadersFromFiles();
-        fprintf(stdout,"Shaders recarregados!\n");
-        fflush(stdout);
-    }
+    //if (key == GLFW_KEY_R && action == GLFW_PRESS)
+    //{
+    //    LoadShadersFromFiles();
+    //    fprintf(stdout,"Shaders recarregados!\n");
+    //    fflush(stdout);
+    //}
 
     //Codigo adicionado
     //Movimentação nave GLFW_REPEAT
@@ -1291,6 +1272,11 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mod)
     {
         if(j.para == 1) return;
         j.dispara();
+    }
+
+    if (key == GLFW_KEY_R&& action == GLFW_PRESS)
+    {
+        j = Jogo();
     }
 
 }
@@ -1379,7 +1365,7 @@ void TextRendering_ShowEulerAngles(GLFWwindow* window)
 }
 
 // Escrevemos na tela qual matriz de projeção está sendo utilizada.
-void TextRendering_ShowProjection(GLFWwindow* window)
+/*void TextRendering_ShowProjection(GLFWwindow* window)
 {
     if ( !g_ShowInfoText )
         return;
@@ -1391,7 +1377,27 @@ void TextRendering_ShowProjection(GLFWwindow* window)
         TextRendering_PrintString(window, "Perspective", 1.0f-13*charwidth, -1.0f+2*lineheight/10, 1.0f);
     else
         TextRendering_PrintString(window, "Orthographic", 1.0f-13*charwidth, -1.0f+2*lineheight/10, 1.0f);
+}*/
+
+//Codigo
+//Pontuação
+void TextRendering_ShowScore(GLFWwindow* window)
+{
+    if ( !g_ShowInfoText )
+        return;
+
+    static char  buffer[10] = "??? Score";
+    static int   numchars = 10;
+
+
+    float lineheight = TextRendering_LineHeight(window);
+    float charwidth = TextRendering_CharWidth(window);
+
+    numchars = snprintf(buffer, 10, "%03d Score", j.get_score());
+
+    TextRendering_PrintString(window, buffer, 1.0f-(10)*charwidth, -1.0f+2*lineheight/10, 1.0f);
 }
+
 
 // Escrevemos na tela o número de quadros renderizados por segundo (frames per
 // second).

@@ -5,7 +5,7 @@
 class Colissions
 {
     public:
-        static colisão(float pa_x, float pa_y, float pa_z, float ra, float pb_x, float pb_y, float pb_z, float rb)
+        static int colisao(float pa_x, float pa_y, float pa_z, float ra, float pb_x, float pb_y, float pb_z, float rb);
 
     protected:
 

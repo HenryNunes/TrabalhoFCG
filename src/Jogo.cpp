@@ -2,31 +2,22 @@
 #include <GLFW/glfw3.h>
 //#include "Barreira.h"
 #include <cstdio>
+#include "Colissions.h"
 
 Jogo::Jogo()
 {
-        this->score = 2;
+        this->score = 0;
         this->inicio_tempo = 0;
         this->velocidade = 1;
+        this->ultima_onda = 0;
+        this->para = 0;
 
-        //this->ovnis = vector<ovni>;
-        //this->tiros = vector<Tiro>;
-
-       this->superior = Barreira(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-       this->inferior = Barreira(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-
-       //TODO criar objetos da cena e inserir nos vetores
-       //Preenche os vetores
-       //Ovnies
-       for(int i = 0; i < 5; i++){
-          ovni temp(float((i*6)-12), 13.0, 0.0, 0.0, 0.0, 0.0);
-          ovnis.push_back(temp);
-       }
-       //printf("size %d", ovnis.size());
+        this->ovnis = vector<ovni>();
+        this->tiros = vector<Tiro>();
+        printf("reset\n");
 
        //Cria nave
        //this->nave = Nave(0.0, -12.0, 0.0, 0.0, 0.0, 0.0);
-
 }
 
 Jogo::~Jogo()
@@ -35,6 +26,7 @@ Jogo::~Jogo()
 }
 
 void Jogo::destroi_Ovni(int id){
+    //printf("%d \n", this->score);
     this->score = this->score + 1;
     ovnis.erase(ovnis.begin() + id);
 }
@@ -45,13 +37,15 @@ void  Jogo::destroi_Tiro(int id){
 
 void Jogo::start(){
     this->inicio_tempo = glfwGetTime();
+    this->ultima_onda = glfwGetTime();
+
+    //Ovnies
+    for(int i = 0; i < 5; i++){
+       ovni temp(float((i*6)-12), 13.0, 0.0, 0.0, 0.0, 0.0, glfwGetTime());
+       ovnis.push_back(temp);
+    }
 }
 
-void Jogo::reset(){
-
-
-
-}
 
 void Jogo::update(){
     if(this->para == 1) return;
@@ -77,7 +71,15 @@ void Jogo::update(){
     }
 
     //Procura colisoes
+    for(int o = 0; o < this->ovnis.size(); o++){
+        for(int t = 0; t < this->tiros.size(); t++){
 
+            if( Colissions::colisao(ovnis[o].t_x, ovnis[o].t_y, ovnis[o].t_z, 1.0, tiros[t].t_x, tiros[t].t_y, tiros[t].t_z, 0.5) == 1){
+                this->destroi_Tiro(t);
+                this->destroi_Ovni(o);
+            }
+        }
+    }
 
 
     //verifica se ovnis ganharam
@@ -86,6 +88,15 @@ void Jogo::update(){
             this->para = 1;
         }
     }
+
+    //Cria novos ovnies
+    if(glfwGetTime() - this->ultima_onda > 6.0 ){
+        for(int i = 0; i < 5; i++){
+            ovni temp(float((i*6)-12), 13.0, 0.0, 0.0, 0.0, 0.0, glfwGetTime());
+            ovnis.push_back(temp);
+        }
+        this->ultima_onda = glfwGetTime();
+     }
 
     this->ultimo_frame = agora;
 }
@@ -103,22 +114,18 @@ vector<ovni> Jogo::get_ovinis(){
 vector<Tiro> Jogo::get_tiros(){
     return tiros;
 }
-Barreira Jogo::get_superior(){
-    return superior;
-}
-Barreira Jogo::get_inferior(){
-    return inferior;
-}
+
 int Jogo::get_score(){
-    return score;
+    return this->score;
 }
 void Jogo::dispara()
 {
     if(this->para == 1) return;
     float delta_t = glfwGetTime() - this->ultimo_disparo;
-    if(delta_t > 2.0){
+    if(delta_t > 0.5){
         Tiro temp(this->nave.t_x, -9.7, 0, 0, 0, 0);
         this->tiros.push_back(temp);
+        this->ultimo_disparo = glfwGetTime();
     }
 
 }
