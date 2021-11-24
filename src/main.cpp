@@ -229,7 +229,7 @@ int main(int argc, char* argv[])
     // Criamos uma janela do sistema operacional, com 800 colunas e 600 linhas
     // de pixels, e com título "INF01047 ...".
     GLFWwindow* window;
-    window = glfwCreateWindow(800, 600, "INF01047 - Seu Cartao - Seu Nome", NULL, NULL);
+    window = glfwCreateWindow(800, 600, "INF01047 - 00291090 - Henry Nunes", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -241,11 +241,11 @@ int main(int argc, char* argv[])
     // pressionar alguma tecla do teclado ...
     glfwSetKeyCallback(window, KeyCallback);
     // ... ou clicar os botões do mouse ...
-    //glfwSetMouseButtonCallback(window, MouseButtonCallback);
+    glfwSetMouseButtonCallback(window, MouseButtonCallback);
     // ... ou movimentar o cursor do mouse em cima da janela ...
-    //glfwSetCursorPosCallback(window, CursorPosCallback);
+    glfwSetCursorPosCallback(window, CursorPosCallback);
     // ... ou rolar a "rodinha" do mouse.
-    //glfwSetScrollCallback(window, ScrollCallback);
+    glfwSetScrollCallback(window, ScrollCallback);
 
     // Indicamos que as chamadas OpenGL deverão renderizar nesta janela
     glfwMakeContextCurrent(window);
@@ -276,6 +276,7 @@ int main(int argc, char* argv[])
     // Carregamos duas imagens para serem utilizadas como textura
     LoadTextureImage("../../data/tc-earth_daymap_surface.jpg");      // TextureImage0
     LoadTextureImage("../../data/tc-earth_nightmap_citylights.gif"); // TextureImage1
+    LoadTextureImage("../../data/asteroid.png"); // TextureImage2
 
     // Construímos a representação de objetos geométricos através de malhas de triângulos
     ObjModel spheremodel("../../data/sphere.obj");
@@ -289,6 +290,15 @@ int main(int argc, char* argv[])
     ObjModel planemodel("../../data/plane.obj");
     ComputeNormals(&planemodel);
     BuildTrianglesAndAddToVirtualScene(&planemodel);
+
+    ObjModel ovnimodel("../../data/asteroid-small.obj");
+    ComputeNormals(&ovnimodel);
+    BuildTrianglesAndAddToVirtualScene(&ovnimodel);
+
+    ObjModel shipmodel("../../data/sg-light-destroyer.obj");
+    ComputeNormals(&shipmodel);
+    BuildTrianglesAndAddToVirtualScene(&shipmodel);
+
 
     if ( argc > 1 )
     {
@@ -315,8 +325,6 @@ int main(int argc, char* argv[])
 
     //CODIGO NOVO: Inicia o contador de tempo do jogo que vai armazenar os objetos do jogo e computa as regras do jogo
     j.start();
-    //printf("size %d \n", j.get_ovinis().size());
-    //printf("score %d \n", j.get_score());
 
     // Ficamos em loop, renderizando, até que o usuário feche a janela
     while (!glfwWindowShouldClose(window))
@@ -402,6 +410,8 @@ int main(int argc, char* argv[])
         #define SPHERE 0
         #define BUNNY  1
         #define PLANE  2
+        #define OVNI   3
+        #define SHIP   3
 
         /* Não usado
         // Desenhamos o modelo da esfera
@@ -433,10 +443,10 @@ int main(int argc, char* argv[])
 
         for(int i = 0; i < ovnis.size(); i++){
             ovni v = ovnis[i];
-            model = Matrix_Translate(v.t_x, v.t_y, v.t_z) * Matrix_Rotate_X(v.r_x) * Matrix_Rotate_Y(v.r_y) * Matrix_Rotate_Z(v.r_z);
+            model = Matrix_Translate(v.t_x, v.t_y, v.t_z) * Matrix_Rotate_X(v.r_x) * Matrix_Rotate_Y(v.r_y) * Matrix_Rotate_Z(v.r_z) * Matrix_Scale(1.5,1.5,1.5);
             glUniformMatrix4fv(model_uniform, 1 , GL_FALSE , glm::value_ptr(model));
-            glUniform1i(object_id_uniform, SPHERE);
-            DrawVirtualObject("sphere");
+            glUniform1i(object_id_uniform, OVNI);
+            DrawVirtualObject("Asteroid");
         }
 
         //Desenhando Tiros
@@ -444,7 +454,7 @@ int main(int argc, char* argv[])
 
         for(int i = 0; i < tiros.size(); i++){
             Tiro v = tiros[i];
-            model = Matrix_Translate(v.t_x, v.t_y, v.t_z) * Matrix_Rotate_X(v.r_x) * Matrix_Rotate_Y(v.r_y) * Matrix_Rotate_Z(v.r_z);
+            model = Matrix_Translate(v.t_x, v.t_y, v.t_z) * Matrix_Rotate_X(v.r_x) * Matrix_Rotate_Y(v.r_y) * Matrix_Rotate_Z(v.r_z) * Matrix_Scale(00.50,00.50,0.50);
             glUniformMatrix4fv(model_uniform, 1 , GL_FALSE , glm::value_ptr(model));
             glUniform1i(object_id_uniform, SPHERE);
             DrawVirtualObject("sphere");
@@ -453,10 +463,10 @@ int main(int argc, char* argv[])
         //Desenhando a nave
         //*
         Nave* nave = j.get_Nave();
-        model = Matrix_Translate(nave->t_x, nave->t_y, nave->t_z) * Matrix_Rotate_X(nave->r_x) * Matrix_Rotate_Y(nave->r_y) * Matrix_Rotate_Z(nave->r_z);
+        model = Matrix_Translate(nave->t_x, nave->t_y, nave->t_z) * Matrix_Rotate_X(nave->r_x) * Matrix_Rotate_Y(nave->r_y) * Matrix_Rotate_Z(nave->r_z) * Matrix_Scale(00.50,00.50,0.50);
         glUniformMatrix4fv(model_uniform, 1 , GL_FALSE , glm::value_ptr(model));
-        glUniform1i(object_id_uniform, SPHERE);
-        DrawVirtualObject("sphere");
+        glUniform1i(object_id_uniform, SHIP);
+        DrawVirtualObject("Ship");
         //*/
 
 

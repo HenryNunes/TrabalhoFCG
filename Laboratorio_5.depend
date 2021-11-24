@@ -29,7 +29,7 @@
 	<inttypes.h>
 	<stdint.h>
 
-1637618912 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\main.cpp
+1637700217 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\main.cpp
 	<cmath>
 	<cstdio>
 	<cstdlib>
@@ -928,13 +928,13 @@
 	<glm/vec4.hpp>
 	<glm/gtc/matrix_transform.hpp>
 
-1637616384 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\nave.cpp
+1637700089 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\nave.cpp
 	"Nave.h"
 	<cstdio>
 
 1637616160 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\nave.h
 
-1637618851 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\ovni.cpp
+1637699674 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\ovni.cpp
 	"ovni.h"
 
 1637618256 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\ovni.h
@@ -963,7 +963,7 @@
 	<GLFW/glfw3.h>
 	<cstdio>
 
-1637618723 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\jogo.h
+1637700186 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\jogo.h
 	<vector>
 	<Nave.h>
 	<ovni.h>
@@ -975,4 +975,9 @@
 
 1637618415 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\tiro.cpp
 	"Tiro.h"
+
+1637695503 source:c:\users\henry\onedrive\documentos\github\trabalhofcg\src\colissions.cpp
+	"Colissions.h"
+
+1637695503 c:\users\henry\onedrive\documentos\github\trabalhofcg\include\colissions.h
 

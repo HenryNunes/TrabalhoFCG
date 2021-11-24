@@ -18,4 +18,6 @@ ovni::~ovni()
 
 void ovni::move(float delta_t){
     this->t_y = this->t_y - 4*delta_t;
+    this->r_y = this->r_y + 0.01;
+    this->r_x = this->r_x + 0.01;
 }
